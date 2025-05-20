@@ -520,3 +520,4 @@ void CsimulateDlg::OnBnClickedCheckNog()
 		g = 0;
 	}
 }
+//test
