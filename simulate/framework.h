@@ -15,6 +15,7 @@
 #include <afxext.h>         // MFC 扩展
 
 
+#include <afxdisp.h>        // MFC 自动化类
 
 
 
