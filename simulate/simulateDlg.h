@@ -72,4 +72,12 @@ public:
 	afx_msg void OnBnClickedCheckNoelost();
 	afx_msg void OnBnClickedCheckKeyctrl();
 	afx_msg void OnBnClickedCheckNog();
+	CStatic t_start;
+	CStatic t_v;
+	CStatic t_vx;
+	CStatic t_vy;
+	CStatic t_a;
+	CStatic t_ax;
+	CStatic t_ay;
+	CStatic t_position;
 };

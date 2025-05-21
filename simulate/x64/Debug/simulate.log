@@ -1,29 +1,26 @@
-﻿  pch.cpp
-  simulate.cpp
-  simulateDlg.cpp
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(157,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+﻿  simulateDlg.cpp
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(165,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-  正在生成代码...
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(158,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(166,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(159,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(167,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(160,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(168,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(220,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(228,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(221,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(229,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(222,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(230,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(223,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(231,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
   simulate.vcxproj -> D:\learn\VC\大作业\simulate\x64\Debug\simulate.exe

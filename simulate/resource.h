@@ -22,8 +22,16 @@
 #define IDC_COMBO1                      1018
 #define IDC_CHECK_NOELOST               1019
 #define IDC_CHECK_KEYCTRL               1020
-#define IDC_CHECK3                      1021
 #define IDC_CHECK_NOG                   1021
+#define IDT_START                       1022
+#define IDT_V                           1023
+#define IDT_A                           1024
+#define IDT_AX                          1026
+#define IDT_VY                          1027
+#define IDT_V5                          1028
+#define IDT_AY                          1028
+#define IDT_VX                          1029
+#define IDT_POSITION                    1030
 
 // Next default values for new objects
 // 
@@ -31,7 +39,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        130
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1021
+#define _APS_NEXT_CONTROL_VALUE         1031
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

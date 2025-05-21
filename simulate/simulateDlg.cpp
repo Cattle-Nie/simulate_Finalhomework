@@ -52,6 +52,14 @@ void CsimulateDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_CHECK_NOELOST, m_chk1);
 	DDX_Control(pDX, IDC_CHECK_KEYCTRL, m_chk_key);
 	DDX_Control(pDX, IDC_CHECK_NOG, m_chk_nog);
+	DDX_Control(pDX, IDT_START, t_start);
+	DDX_Control(pDX, IDT_V, t_v);
+	DDX_Control(pDX, IDT_VX, t_vx);
+	DDX_Control(pDX, IDT_VY, t_vy);
+	DDX_Control(pDX, IDT_A, t_a);
+	DDX_Control(pDX, IDT_AX, t_ax);
+	DDX_Control(pDX, IDT_AY, t_ay);
+	DDX_Control(pDX, IDT_POSITION, t_position);
 }
 
 BEGIN_MESSAGE_MAP(CsimulateDlg, CDialogEx)
@@ -450,26 +458,38 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			ax = 0;
 			ay = -g;
 		}
-		if (v < 0.1 && y <= r + 0.1) {
+	
+		if (v < 0.2 && (y <= r + 5)) {
 			vx = 0;
 			vy = 0;
 			ax = 0;
 			ay = 0;
-			
-		}
-
-
-		if (v < 0.4 && (y <= r + 10)) {
-			vx = 0;
-			vy = 0;
-			ax = 0;
-			ay = 0;
+			v = 0;
 			y = r;         // 确保贴地
 			start = FALSE; // 停止模拟
 		}
 		
 		InvalidateRect(rc, FALSE); // 触发 OnPaint，更新绘图
 		
+		//更新监视器
+		int time = t * 30 / 1000;
+		CString tstart, tv, tvx, tvy, ta, tax, tay, tposition;
+		tstart.Format(_T("模拟已运行%d秒"), time);
+		tv.Format(_T("%.2f"), v);
+		tvx.Format(_T("%.2f"), vx);
+		tvy.Format(_T("%.2f"), vy);
+		ta.Format(_T("%.2f"), sqrt(ax * ax + ay * ay));
+		tax.Format(_T("%.2f"), ax);
+		tay.Format(_T("%.2f"), ay);
+		tposition.Format(_T("(%.0f，%.0f)"), x, y);
+		t_start.SetWindowTextW(tstart);
+		t_v.SetWindowTextW(tv);
+		t_vx.SetWindowTextW(tvx);
+		t_vy.SetWindowTextW(tvy);
+		t_a.SetWindowTextW(ta);
+		t_ax.SetWindowTextW(tax);
+		t_ay.SetWindowTextW(tay);
+		t_position.SetWindowTextW(tposition);
 	}
 	else t = 0;
 	CDialogEx::OnTimer(nIDEvent);
@@ -520,4 +540,3 @@ void CsimulateDlg::OnBnClickedCheckNog()
 		g = 0;
 	}
 }
-//test
