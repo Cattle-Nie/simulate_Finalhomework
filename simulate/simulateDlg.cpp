@@ -21,12 +21,20 @@ CPoint ball1,ball2;//小球的左上点和右下点
 CPoint Ball1,Ball2;//障碍左上点和右下点
 double w, h, x, y, X0, Y0, r, R, vx, vy, ax, ay;
 //画布长，高，小球障碍中心位置xy，小球半径r，障碍半径R，x和y速度v，加速度a；
-
+double v; //这是绝对速度
 int t;//时间变量
-
-double g = 1.0, k = 1;
-BOOL key;
-//自选参数弹性开关、方向键开关、重力、衰减系数。
+int count=0;
+double g = 1.0, k = 1; //重力加速度，弹性系数
+BOOL key;//自选参数：方向键开关.
+COLORREF Colors[7] = {
+	RGB(255, 0, 0),      // 红
+	RGB(255, 128, 0),    // 橙
+	RGB(255, 255, 0),    // 黄
+	RGB(0, 255, 0),      // 绿
+	RGB(0, 0, 255),      // 蓝
+	RGB(75, 0, 130),     // 靛
+	RGB(139, 0, 255)     // 紫
+};//障碍颜色
 
 CsimulateDlg::CsimulateDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_SIMULATE_DIALOG, pParent)
@@ -158,14 +166,15 @@ BOOL CsimulateDlg::OnInitDialog()
 
 void CsimulateDlg::OnPaint()
 {
-	if (start) {
+	ball1.x = x - r;
+	ball1.y = h - (y + r);
+	ball2.x = x + r;
+	ball2.y = h - (y - r);
+	if (start||t!=0) {
 		CPaintDC dc(this);
 		CDC DrawDC;
 		CBitmap Draw;
-		ball1.x = x - r;
-		ball1.y = h - (y + r);
-		ball2.x = x + r;
-		ball2.y = h - (y - r);
+		
 
 		DrawDC.CreateCompatibleDC(&dc);
 		// 创建背景Bitmap
@@ -173,9 +182,11 @@ void CsimulateDlg::OnPaint()
 		// 将Bitmap选入DC
 		CBitmap* pOldBmp = DrawDC.SelectObject(&Draw); // 记得选入
 		DrawDC.FillSolidRect(0, 0, rc.Width(), rc.Height(), RGB(255, 255, 255));
-		hBrush = CreateSolidBrush(RGB(255, 220, 220));//
+		hBrush = CreateSolidBrush(RGB(125, min(255, int(v * 2)), 255));//画刷颜色根据速度变化
 		DrawDC.SelectObject(hBrush); // 选入画刷
 		DrawDC.Ellipse(ball1.x, ball1.y, ball2.x, ball2.y); // 画小球
+		hBrush = CreateSolidBrush(Colors[count % 7]);//障碍物颜色
+		DrawDC.SelectObject(hBrush); // 选入画刷
 		DrawDC.Ellipse(Ball1.x, Ball1.y, Ball2.x, Ball2.y); // 画障碍
 
 		dc.BitBlt(rc.left, rc.top, rc.Width(), rc.Height(), &DrawDC, 0, 0, SRCCOPY);
@@ -237,6 +248,10 @@ void CsimulateDlg::OnBnClickedStart()
 		ay = -n_miu * 5 * vy / n_v - 1.0; // 同时加入重力
 		//转换开关
 		start = TRUE;
+		//初始化时间
+		t = 0;
+		//初始化碰撞次数
+		count = 0;
 	}
 }
 
@@ -431,7 +446,7 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			y = h - r;
 		}
 		//绝对速度计算
-		double v = sqrt(vx * vx + vy * vy);
+		v = sqrt(vx * vx + vy * vy);
 		
 		//障碍碰撞检测处理
 		if ((x - X0) * (x - X0) + (y - Y0) * (y - Y0) < (r + R) * (r + R))
@@ -444,6 +459,7 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			vy = v * sin(anglen) * k;
 			x = X0 + (r + R) * cos(angle1);
 			y = Y0 + (r + R) * sin(angle1);
+			count += 1;
 		}
 		
 		//算加速度
@@ -459,13 +475,31 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			ay = -g;
 		}
 	
-		if (v < 0.2 && (y <= r + 5)) {
+		if (g!=0&&v < 0.3 && (y <= r + 5)) {
 			vx = 0;
 			vy = 0;
 			ax = 0;
 			ay = 0;
 			v = 0;
 			y = r;         // 确保贴地
+			start = FALSE; // 停止模拟
+		}
+		else if (g == 0 && v < 0.1 )
+		{
+			vx = 0;
+			vy = 0;
+			ax = 0;
+			ay = 0;
+			v = 0;
+			start = FALSE; // 停止模拟
+		}
+		else if (30 * t > 10000)
+		{
+			vx = 0;
+			vy = 0;
+			ax = 0;
+			ay = 0;
+			v = 0;
 			start = FALSE; // 停止模拟
 		}
 		
@@ -490,8 +524,15 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 		t_ax.SetWindowTextW(tax);
 		t_ay.SetWindowTextW(tay);
 		t_position.SetWindowTextW(tposition);
+		//如果模拟停止，弹窗提示
+		if (start == FALSE)
+		{
+			CString str;
+			str.Format(_T("模拟结束！最终位置：(%.0f，%.0f)"),  x, y);
+			AfxMessageBox(str);
+		}
 	}
-	else t = 0;
+	
 	CDialogEx::OnTimer(nIDEvent);
 }
 
