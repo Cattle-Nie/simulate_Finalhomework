@@ -475,13 +475,31 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			ay = -g;
 		}
 	
-		if (v < 0.2 && (y <= r + 5)) {
+		if (g!=0&&v < 0.3 && (y <= r + 5)) {
 			vx = 0;
 			vy = 0;
 			ax = 0;
 			ay = 0;
 			v = 0;
 			y = r;         // 确保贴地
+			start = FALSE; // 停止模拟
+		}
+		else if (g == 0 && v < 0.1 )
+		{
+			vx = 0;
+			vy = 0;
+			ax = 0;
+			ay = 0;
+			v = 0;
+			start = FALSE; // 停止模拟
+		}
+		else if (30 * t > 10000)
+		{
+			vx = 0;
+			vy = 0;
+			ax = 0;
+			ay = 0;
+			v = 0;
 			start = FALSE; // 停止模拟
 		}
 		
@@ -506,6 +524,13 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 		t_ax.SetWindowTextW(tax);
 		t_ay.SetWindowTextW(tay);
 		t_position.SetWindowTextW(tposition);
+		//如果模拟停止，弹窗提示
+		if (start == FALSE)
+		{
+			CString str;
+			str.Format(_T("模拟结束！最终位置：(%.0f，%.0f)"),  x, y);
+			AfxMessageBox(str);
+		}
 	}
 	
 	CDialogEx::OnTimer(nIDEvent);
