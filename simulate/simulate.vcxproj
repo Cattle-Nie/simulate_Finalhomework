@@ -192,6 +192,7 @@
     <ClInclude Include="PropertiesWnd.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="simulate.h" />
+    <ClInclude Include="simulateDlg.h" />
     <ClInclude Include="simulateDoc.h" />
     <ClInclude Include="simulateView.h" />
     <ClInclude Include="targetver.h" />
@@ -210,6 +211,7 @@
     </ClCompile>
     <ClCompile Include="PropertiesWnd.cpp" />
     <ClCompile Include="simulate.cpp" />
+    <ClCompile Include="simulateDlg.cpp" />
     <ClCompile Include="simulateDoc.cpp" />
     <ClCompile Include="simulateView.cpp" />
     <ClCompile Include="ViewTree.cpp" />

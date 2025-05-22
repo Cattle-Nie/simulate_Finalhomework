@@ -1,0 +1,35 @@
+﻿  ClassView.cpp
+  FileView.cpp
+  MainFrm.cpp
+  OutputWnd.cpp
+  PropertiesWnd.cpp
+  simulate.cpp
+  simulateDlg.cpp
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(169,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(170,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(171,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(172,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(239,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(240,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(241,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(242,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+  (编译源文件“/simulateDlg.cpp”)
+  
+  simulateDoc.cpp
+  simulateView.cpp
+  正在生成代码...
+  simulate.vcxproj -> D:\learn\VC\大作业\simulate\x64\Debug\simulate.exe

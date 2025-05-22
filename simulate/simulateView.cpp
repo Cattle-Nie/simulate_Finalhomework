@@ -12,6 +12,7 @@
 
 #include "simulateDoc.h"
 #include "simulateView.h"
+#include "simulateDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -25,6 +26,7 @@ IMPLEMENT_DYNCREATE(CsimulateView, CView)
 BEGIN_MESSAGE_MAP(CsimulateView, CView)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
+	ON_COMMAND(ID_EXP, &CsimulateView::OnExp)
 END_MESSAGE_MAP()
 
 // CsimulateView 构造/析构
@@ -95,3 +97,10 @@ CsimulateDoc* CsimulateView::GetDocument() const // 非调试版本是内联的
 
 
 // CsimulateView 消息处理程序
+
+void CsimulateView::OnExp()
+{
+	// TODO: 在此添加命令处理程序代码
+	CsimulateDlg dlg;
+	dlg.DoModal();
+}
