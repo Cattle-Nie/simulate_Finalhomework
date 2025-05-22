@@ -8,20 +8,20 @@
 // CsimulateDlg 对话框
 class CsimulateDlg : public CDialogEx
 {
-// 构造
+	// 构造
 public:
 	CsimulateDlg(CWnd* pParent = nullptr);	// 标准构造函数
 
-// 对话框数据
+	// 对话框数据
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_SIMULATE_DIALOG };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
 
 
-// 实现
+	// 实现
 protected:
 	HICON m_hIcon;
 
@@ -38,7 +38,7 @@ public:
 	CDC MemDC;                 // 内存DC
 	//CDC DrawDC;
 	CRect rc;					 //模拟绘图区域
-	int n_angle ;
+	int n_angle;
 	int n_D1;
 	int n_D2;
 	int n_v;
@@ -51,14 +51,14 @@ public:
 	CEdit edit1;
 	CEdit edit2;
 	CEdit edit3;
-	
+
 	CScrollBar bar_d1;
 	CSliderCtrl sld_d2;
 
 	void Changeedit1();
 	void Changeedit2();
 	void Changeedit3();
-	
+
 	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	CComboBox m_cb;//组框

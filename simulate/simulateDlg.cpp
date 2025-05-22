@@ -17,13 +17,13 @@
 // CsimulateDlg 对话框
 //全局变量
 BOOL start = 0;//模拟开始开关
-CPoint ball1,ball2;//小球的左上点和右下点
-CPoint Ball1,Ball2;//障碍左上点和右下点
+CPoint ball1, ball2;//小球的左上点和右下点
+CPoint Ball1, Ball2;//障碍左上点和右下点
 double w, h, x, y, X0, Y0, r, R, vx, vy, ax, ay;
 //画布长，高，小球障碍中心位置xy，小球半径r，障碍半径R，x和y速度v，加速度a；
 double v; //这是绝对速度
 int t;//时间变量
-int count=0;
+int count = 0;
 double g = 1.0, k = 1; //重力加速度，弹性系数
 BOOL key;//自选参数：方向键开关.
 COLORREF Colors[7] = {
@@ -38,10 +38,10 @@ COLORREF Colors[7] = {
 
 CsimulateDlg::CsimulateDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_SIMULATE_DIALOG, pParent)
-	, n_angle(0), 
-	n_D1(0), 
-	n_D2(0), 
-	n_miu(0), 
+	, n_angle(0),
+	n_D1(0),
+	n_D2(0),
+	n_miu(0),
 	n_v(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -73,7 +73,7 @@ void CsimulateDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CsimulateDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	
+
 	ON_BN_CLICKED(IDC_EXIT, &CsimulateDlg::OnBnClickedExit)
 	ON_BN_CLICKED(IDC_START, &CsimulateDlg::OnBnClickedStart)
 	ON_BN_CLICKED(IDC_RADIO1, &CsimulateDlg::OnBnClickedRadio1)
@@ -111,7 +111,7 @@ BOOL CsimulateDlg::OnInitDialog()
 	n_v = 20;
 	n_miu = 0.1;
 
-	bar_d1.SetScrollRange(40,100);
+	bar_d1.SetScrollRange(40, 100);
 	bar_d1.SetScrollPos(n_D1);
 	sld_d2.SetRange(50, 200);
 	sld_d2.SetPos(n_D2);
@@ -125,7 +125,7 @@ BOOL CsimulateDlg::OnInitDialog()
 	pSpin->SetPos(20);
 	pSpin->GetBuddy()->SetWindowText(L"20");
 
-	m_cb.AddString(L"0.1"); 
+	m_cb.AddString(L"0.1");
 	m_cb.AddString(L"0.2");
 	m_cb.AddString(L"0.3");
 	m_cb.AddString(L"无空气阻力");
@@ -146,7 +146,7 @@ BOOL CsimulateDlg::OnInitDialog()
 	// 将Bitmap选入DC
 	CBitmap* pOldBmp = MemDC.SelectObject(&Background);
 	// 填充白色背景
-	MemDC.FillSolidRect(0, 0, rc.Width(), rc.Height(), RGB(255, 255, 255)); 
+	MemDC.FillSolidRect(0, 0, rc.Width(), rc.Height(), RGB(255, 255, 255));
 	MemDC.SelectObject(pOldBmp); // 恢复原来的Bitmap
 	Invalidate(FALSE); // 触发 OnPaint，不清除背景
 	UpdateWindow();    // 立即执行绘图（不等待消息循环）
@@ -170,11 +170,11 @@ void CsimulateDlg::OnPaint()
 	ball1.y = h - (y + r);
 	ball2.x = x + r;
 	ball2.y = h - (y - r);
-	if (start||t!=0) {
+	if (start || t != 0) {
 		CPaintDC dc(this);
 		CDC DrawDC;
 		CBitmap Draw;
-		
+
 
 		DrawDC.CreateCompatibleDC(&dc);
 		// 创建背景Bitmap
@@ -222,7 +222,7 @@ void CsimulateDlg::OnBnClickedExit()
 void CsimulateDlg::OnBnClickedStart()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	
+
 	if (start == FALSE)
 	{
 		//初始化尺寸
@@ -239,12 +239,12 @@ void CsimulateDlg::OnBnClickedStart()
 		Ball1.x = X0 - R;
 		Ball1.y = h - (Y0 + R);
 		Ball2.x = X0 + R;
-		Ball2.y = h-(Y0 - R);
+		Ball2.y = h - (Y0 - R);
 		//初始化速度
-		vx = -n_v * cos(n_angle * PI / 180.0)*5;
-		vy = n_v * sin(n_angle * PI / 180.0)*5;
+		vx = -n_v * cos(n_angle * PI / 180.0) * 5;
+		vy = n_v * sin(n_angle * PI / 180.0) * 5;
 		// 初始化加速度
-		ax = -n_miu*5* vx / n_v;
+		ax = -n_miu * 5 * vx / n_v;
 		ay = -n_miu * 5 * vy / n_v - 1.0; // 同时加入重力
 		//转换开关
 		start = TRUE;
@@ -425,9 +425,9 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 		vx = vx + ax;
 		vy = vy + ay;
 		//边框碰撞检测处理
-		if (x < r )
+		if (x < r)
 		{
-			vx = -vx*k;
+			vx = -vx * k;
 			x = r;
 		}
 		if (x > w - r)
@@ -447,7 +447,7 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 		}
 		//绝对速度计算
 		v = sqrt(vx * vx + vy * vy);
-		
+
 		//障碍碰撞检测处理
 		if ((x - X0) * (x - X0) + (y - Y0) * (y - Y0) < (r + R) * (r + R))
 		{
@@ -461,11 +461,11 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			y = Y0 + (r + R) * sin(angle1);
 			count += 1;
 		}
-		
+
 		//算加速度
-		double friction = n_miu*5/2 ; 
-		
-		
+		double friction = n_miu * 5 / 2;
+
+
 		if (v != 0) {
 			ax = -friction * vx / v;
 			ay = -friction * vy / v - g; // 同时加入重力
@@ -474,8 +474,8 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			ax = 0;
 			ay = -g;
 		}
-	
-		if (g!=0&&v < 0.3 && (y <= r + 5)) {
+
+		if (g != 0 && v < 0.3 && (y <= r + 5)) {
 			vx = 0;
 			vy = 0;
 			ax = 0;
@@ -484,7 +484,7 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			y = r;         // 确保贴地
 			start = FALSE; // 停止模拟
 		}
-		else if (g == 0 && v < 0.1 )
+		else if (g == 0 && v < 0.1)
 		{
 			vx = 0;
 			vy = 0;
@@ -502,9 +502,9 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 			v = 0;
 			start = FALSE; // 停止模拟
 		}
-		
+
 		InvalidateRect(rc, FALSE); // 触发 OnPaint，更新绘图
-		
+
 		//更新监视器
 		int time = t * 30 / 1000;
 		CString tstart, tv, tvx, tvy, ta, tax, tay, tposition;
@@ -528,11 +528,11 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 		if (start == FALSE)
 		{
 			CString str;
-			str.Format(_T("模拟结束！最终位置：(%.0f，%.0f)"),  x, y);
+			str.Format(_T("模拟结束！最终位置：(%.0f，%.0f)"), x, y);
 			AfxMessageBox(str);
 		}
 	}
-	
+
 	CDialogEx::OnTimer(nIDEvent);
 }
 
@@ -542,12 +542,12 @@ void CsimulateDlg::OnBnClickedCheckNoelost()
 	if (m_chk1.GetCheck())
 	{
 		m_chk1.SetCheck(0);
-		k=0.95;
+		k = 0.95;
 	}
 	else
 	{
 		m_chk1.SetCheck(1);
-		k= 1;
+		k = 1;
 	}
 }
 
