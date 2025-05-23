@@ -80,4 +80,7 @@ public:
 	CStatic t_ax;
 	CStatic t_ay;
 	CStatic t_position;
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };

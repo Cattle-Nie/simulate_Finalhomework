@@ -26,6 +26,7 @@ int t;//时间变量
 int count = 0;
 double g = 1.0, k = 1; //重力加速度，弹性系数
 BOOL key;//自选参数：方向键开关.
+double keyax = 0, keyay = 0;//自选参数：方向键加速度
 COLORREF Colors[7] = {
 	RGB(255, 0, 0),      // 红
 	RGB(255, 128, 0),    // 橙
@@ -89,6 +90,8 @@ BEGIN_MESSAGE_MAP(CsimulateDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CHECK_NOELOST, &CsimulateDlg::OnBnClickedCheckNoelost)
 	ON_BN_CLICKED(IDC_CHECK_KEYCTRL, &CsimulateDlg::OnBnClickedCheckKeyctrl)
 	ON_BN_CLICKED(IDC_CHECK_NOG, &CsimulateDlg::OnBnClickedCheckNog)
+	ON_WM_KEYDOWN()
+	ON_WM_KEYUP()
 END_MESSAGE_MAP()
 
 
@@ -467,12 +470,12 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 
 
 		if (v != 0) {
-			ax = -friction * vx / v;
-			ay = -friction * vy / v - g; // 同时加入重力
+			ax = -friction * vx / v + keyax;
+			ay = -friction * vy / v - g + keyay; // 同时加入重力
 		}
 		else {
-			ax = 0;
-			ay = -g;
+			ax = 0+keyax;
+			ay = -g+keyay;
 		}
 
 		if (g != 0 && v < 0.3 && (y <= r + 5)) {
@@ -580,4 +583,62 @@ void CsimulateDlg::OnBnClickedCheckNog()
 		m_chk_nog.SetCheck(1);
 		g = 0;
 	}
+}
+
+void CsimulateDlg::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if (key)
+	{
+		switch (nChar)
+		{
+		case VK_LEFT:
+			keyax = -1;
+			break;
+		case VK_RIGHT:
+			keyax = 1;
+			break;
+		case VK_UP:
+			keyay = 1;
+			break;
+		case VK_DOWN:
+			keyay = -1;
+			break;
+		case 'A':
+			keyax = -1;
+			break;
+		case 'D':
+			keyax = 1;
+			break;
+		case 'W':
+			keyay = 1;
+			break;
+		case 'S':
+			keyay = -1;
+			break;
+		default:
+			break;
+		}
+	}
+	
+	CDialogEx::OnKeyDown(nChar, nRepCnt, nFlags);
+}
+
+void CsimulateDlg::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	keyax = 0;
+	keyay = 0;
+	CDialogEx::OnKeyUp(nChar, nRepCnt, nFlags);
+}
+
+BOOL CsimulateDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	if (pMsg->message == WM_KEYDOWN|| pMsg->message == WM_KEYUP)
+	{
+		SendMessage(pMsg->message, pMsg->wParam, pMsg->lParam);
+	}
+	
+	return CDialogEx::PreTranslateMessage(pMsg);
 }
