@@ -509,9 +509,9 @@ void CsimulateDlg::OnTimer(UINT_PTR nIDEvent)
 		int time = t * 30 / 1000;
 		CString tstart, tv, tvx, tvy, ta, tax, tay, tposition;
 		tstart.Format(_T("模拟已运行%d秒"), time);
-		tv.Format(_T("%.2f"), v);
-		tvx.Format(_T("%.2f"), vx);
-		tvy.Format(_T("%.2f"), vy);
+		tv.Format(_T("%.2f"), v/5);
+		tvx.Format(_T("%.2f"), vx/5);
+		tvy.Format(_T("%.2f"), vy/5);
 		ta.Format(_T("%.2f"), sqrt(ax * ax + ay * ay));
 		tax.Format(_T("%.2f"), ax);
 		tay.Format(_T("%.2f"), ay);
