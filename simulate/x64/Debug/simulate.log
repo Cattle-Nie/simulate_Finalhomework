@@ -1,26 +1,28 @@
 ﻿  simulateDlg.cpp
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(172,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(160,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(173,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(161,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(174,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(162,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(175,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(163,14): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(242,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(227,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(243,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(228,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(244,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(229,16): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(245,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
+D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(230,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
+  simulateView.cpp
+  正在生成代码...
   simulate.vcxproj -> D:\learn\VC\大作业\simulate\x64\Debug\simulate.exe
