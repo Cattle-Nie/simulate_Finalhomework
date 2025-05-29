@@ -23,6 +23,4 @@ D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(229,16): warning C4244: 
 D:\learn\VC\大作业\simulate\simulate\simulateDlg.cpp(230,15): warning C4244: “=”: 从“double”转换到“LONG”，可能丢失数据
   (编译源文件“/simulateDlg.cpp”)
   
-  simulateView.cpp
-  正在生成代码...
   simulate.vcxproj -> D:\learn\VC\大作业\simulate\x64\Debug\simulate.exe

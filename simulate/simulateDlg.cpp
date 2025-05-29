@@ -172,7 +172,7 @@ void CsimulateDlg::OnPaint()
 		Draw.CreateCompatibleBitmap(&dc, rc.Width(), rc.Height());
 		CBitmap* pOldBmp = DrawDC.SelectObject(&Draw); 	// 将Bitmap选入DC
 		DrawDC.FillSolidRect(0, 0, rc.Width(), rc.Height(), RGB(255, 255, 255)); // 填充白色背景
-		hBrush = CreateSolidBrush(RGB(125, min(255, int(v * 2)), 255));//画刷颜色根据速度变化
+		hBrush = CreateSolidBrush(RGB(min(125 + v*3, 255), min(255, int(v * 2)), max(255 - 1 * v,128)));//画刷颜色根据速度变化
 		DrawDC.SelectObject(hBrush); // 选入画刷
 		DrawDC.Ellipse(ball1.x, ball1.y, ball2.x, ball2.y); // 画小球
 		hBrush = CreateSolidBrush(Colors[count % 7]);//根据碰撞次数障碍物颜色
