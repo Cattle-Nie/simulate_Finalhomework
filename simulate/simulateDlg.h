@@ -31,47 +31,51 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
+	//函数原型，由系统生成，这里不注释，功能在cpp文件写了
 	afx_msg void OnBnClickedExit();
 	afx_msg void OnBnClickedStart();
-	CBitmap Background;     // 缓存的背景
-	//CBitmap Draw;
-	CDC MemDC;                 // 内存DC
-	//CDC DrawDC;
-	CRect rc;					 //模拟绘图区域
-	int n_angle;
-	int n_D1;
-	int n_D2;
-	int n_v;
-	double n_miu;
 	afx_msg void OnBnClickedRadio1();
 	afx_msg void OnBnClickedRadio2();
 	afx_msg void OnBnClickedRadio3();
 	afx_msg void OnBnClickedRadio4();
 	afx_msg void OnBnClickedRadio5();
-	CEdit edit1;
-	CEdit edit2;
-	CEdit edit3;
-
-	CScrollBar bar_d1;
-	CSliderCtrl sld_d2;
-
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	afx_msg void OnCbnSelchangeCombo1();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnBnClickedCheckNoelost();
+	afx_msg void OnBnClickedCheckKeyctrl();
+	afx_msg void OnBnClickedCheckNog();
+	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	void Changeedit1();
 	void Changeedit2();
 	void Changeedit3();
 
-	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	CComboBox m_cb;//组框
-	afx_msg void OnCbnSelchangeCombo1();
-	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	//变量
+	CBitmap Background;     // 缓存的背景
+	CDC MemDC;              // 缓存背景的内存DC
+	CRect rc;				//模拟绘图区域
+	HBRUSH hBrush;			// 画刷
 
-	HBRUSH hBrush;
-	CButton m_chk1;
-	CButton m_chk_key;
-	CButton m_chk_nog;
-	afx_msg void OnBnClickedCheckNoelost();
-	afx_msg void OnBnClickedCheckKeyctrl();
-	afx_msg void OnBnClickedCheckNog();
+	int n_angle; //发射角度
+	int n_D1; //小球直径
+	int n_D2; //障碍直径
+	int n_v; //初速度
+	double n_miu; //摩擦系数
+
+	CEdit edit1; //发射角度编辑框
+	CEdit edit2; //小球直径编辑框
+	CEdit edit3; //障碍直径编辑框
+	CScrollBar bar_d1; //小球直径滚动条
+	CSliderCtrl sld_d2; //障碍直径滑竿
+	CComboBox m_cb; //空气阻力下拉框
+	CButton m_chk1; //弹性碰撞复选框
+	CButton m_chk_key; //方向键控制复选框
+	CButton m_chk_nog; //无重力复选框
+
+	//用于监视的静态控件
 	CStatic t_start;
 	CStatic t_v;
 	CStatic t_vx;
@@ -80,7 +84,4 @@ public:
 	CStatic t_ax;
 	CStatic t_ay;
 	CStatic t_position;
-	afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };
