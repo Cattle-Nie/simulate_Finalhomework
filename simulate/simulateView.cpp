@@ -27,6 +27,7 @@ BEGIN_MESSAGE_MAP(CsimulateView, CView)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
 	ON_COMMAND(ID_EXP, &CsimulateView::OnExp)
+	ON_WM_RBUTTONDOWN()
 END_MESSAGE_MAP()
 
 // CsimulateView 构造/析构
@@ -34,11 +35,12 @@ END_MESSAGE_MAP()
 CsimulateView::CsimulateView() noexcept
 {
 	// TODO: 在此处添加构造代码
-
+	m_PopMenu.LoadMenu(IDR_POP_EXP);
 }
 
 CsimulateView::~CsimulateView()
 {
+	m_PopMenu.DestroyMenu();
 }
 
 BOOL CsimulateView::PreCreateWindow(CREATESTRUCT& cs)
@@ -70,7 +72,7 @@ void CsimulateView::OnRButtonUp(UINT /* nFlags */, CPoint point)
 void CsimulateView::OnContextMenu(CWnd* /* pWnd */, CPoint point)
 {
 #ifndef SHARED_HANDLERS
-	theApp.GetContextMenuManager()->ShowPopupMenu(IDR_POPUP_EDIT, point.x, point.y, this, TRUE);
+	//theApp.GetContextMenuManager()->ShowPopupMenu(IDR_POPUP_EDIT, point.x, point.y, this, TRUE);
 #endif
 }
 
@@ -103,4 +105,13 @@ void CsimulateView::OnExp()
 	// TODO: 在此添加命令处理程序代码
 	CsimulateDlg dlg;
 	dlg.DoModal();
+}
+
+void CsimulateView::OnRButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	m_pPOP = m_PopMenu.GetSubMenu(0);
+	ClientToScreen(&point);
+	m_pPOP->TrackPopupMenu(TPM_LEFTALIGN, point.x, point.y, this);
+	CView::OnRButtonDown(nFlags, point);
 }

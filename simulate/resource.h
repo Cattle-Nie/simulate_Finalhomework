@@ -85,6 +85,8 @@
 #define IDS_FIND_TAB                    302
 #define IDS_EXPLORER                    305
 #define IDS_EDIT_MENU                   306
+#define IDR_MENU1                       310
+#define IDR_POP_EXP                     310
 #define IDC_START                       1000
 #define IDC_EXIT                        1001
 #define IDC_RECT                        1002
@@ -115,13 +117,16 @@
 #define IDT_POSITION                    1030
 #define ID_32771                        32771
 #define ID_EXP                          32772
+#define ID_32773                        32773
+#define IDM_EXP                         32774
+#define ID                              32775
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        310
-#define _APS_NEXT_COMMAND_VALUE         32773
+#define _APS_NEXT_RESOURCE_VALUE        311
+#define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
