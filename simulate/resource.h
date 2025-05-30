@@ -86,7 +86,11 @@
 #define IDS_EXPLORER                    305
 #define IDS_EDIT_MENU                   306
 #define IDR_POP_EXP                     310
+#define IDR_TOOLBAR_EXP                 313
+#define IDD_DIALOG1                     315
+#define IDD_AX                          315
 #define IDC_START                       1000
+#define IDC_OCX1                        1000
 #define IDC_EXIT                        1001
 #define IDC_RECT                        1002
 #define IDC_RADIO1                      1003
@@ -135,9 +139,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        311
-#define _APS_NEXT_COMMAND_VALUE         32787
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_RESOURCE_VALUE        318
+#define _APS_NEXT_COMMAND_VALUE         32796
+#define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif
