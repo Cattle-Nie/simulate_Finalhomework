@@ -17,6 +17,7 @@ protected: // 仅从序列化创建
 
 // 特性
 public:
+	CMFCToolBar m_wndToolBarExp;
 
 // 操作
 public:

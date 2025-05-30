@@ -171,8 +171,25 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	lstBasicCommands.AddTail(ID_SORTING_SORTBYACCESS);
 	lstBasicCommands.AddTail(ID_SORTING_GROUPBYTYPE);
 
-	CMFCToolBar::SetBasicCommands(lstBasicCommands);
+	
 
+
+	CMFCToolBar::SetBasicCommands(lstBasicCommands);
+	if (!m_wndToolBarExp.CreateEx(this, TBSTYLE_FLAT,
+		WS_CHILD | WS_VISIBLE | CBRS_TOP |
+		CBRS_GRIPPER | CBRS_TOOLTIPS |
+		CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
+		!m_wndToolBarExp.LoadToolBar(IDR_TOOLBAR_EXP))
+	{
+		TRACE0("Failed to create toolbar\n");
+		return -1;      			// fail to create
+	}
+	m_wndToolBarExp.EnableDocking(CBRS_ALIGN_ANY);
+	//工具条可以在父窗口内任何一边停靠
+	EnableDocking(CBRS_ALIGN_ANY);
+	// 父窗口允许子工具条窗口在任何一边停靠
+	DockPane(&m_wndToolBarExp);
+	// 父窗口内按照前面指定的风格停靠该工具条
 	return 0;
 }
 
