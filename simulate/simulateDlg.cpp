@@ -16,17 +16,7 @@
 
 // CsimulateDlg 对话框
 //全局变量
-BOOL start = 0;//模拟开始开关
-CPoint ball1, ball2;//小球的左上点和右下点
-CPoint Ball1, Ball2;//障碍左上点和右下点
-double w, h, x, y, X0, Y0, r, R, vx, vy, ax, ay;
-//画布长，高，小球障碍中心位置xy，小球半径r，障碍半径R，x和y速度v，加速度a；
-double v; //绝对速度
-int t;//时间变量
-int count = 0;//碰撞计数，用于控制障碍颜色变化
-double g = 1.0, k = 1; //重力加速度，弹性系数
-BOOL key;//自选参数：方向键开关.
-double keyax = 0, keyay = 0;//自选参数：方向键加速度
+
 COLORREF Colors[7] = {
 	RGB(255, 0, 0),      // 红
 	RGB(255, 128, 0),    // 橙
@@ -70,6 +60,11 @@ void CsimulateDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDT_AX, t_ax);
 	DDX_Control(pDX, IDT_AY, t_ay);
 	DDX_Control(pDX, IDT_POSITION, t_position);
+	DDX_Control(pDX, IDC_RADIO1, m_angle1);
+	DDX_Control(pDX, IDC_RADIO2, m_angle2);
+	DDX_Control(pDX, IDC_RADIO3, m_angle3);
+	DDX_Control(pDX, IDC_RADIO4, m_angle4);
+	DDX_Control(pDX, IDC_RADIO5, m_angle5);
 }
 
 BEGIN_MESSAGE_MAP(CsimulateDlg, CDialogEx)
@@ -108,11 +103,8 @@ BOOL CsimulateDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	//初始化起始运动变量
-	n_angle = 15;
-	n_D1 = 50;
-	n_D2 = 100;
-	n_v = 20;
-	n_miu = 0.1;
+	//经过测试，这里初始化会导致严重bug，所以改到视图中进行初始化
+	// 务必初始化，否则会有更严重的bug
 	//控件初始化，设置调节范围和默认值
 	bar_d1.SetScrollRange(40, 100);
 	bar_d1.SetScrollPos(n_D1);
@@ -122,17 +114,28 @@ BOOL CsimulateDlg::OnInitDialog()
 	m_cb.AddString(L"0.2");
 	m_cb.AddString(L"0.3");
 	m_cb.AddString(L"无空气阻力");
-	m_cb.SetCurSel(0); // 默认选中第一项，即空气阻力0.1
+	//根据预设的角度和摩擦设置单选框和下拉框状态
+	if (n_miu == 0.1)m_cb.SetCurSel(0);
+	else if (n_miu == 0.2)m_cb.SetCurSel(1);
+	else if (n_miu == 0.3)m_cb.SetCurSel(2);
+	else if (n_miu==0)m_cb.SetCurSel(3);
 	m_chk1.SetCheck(1); // 默认选中弹性碰撞
+	if (n_angle == 15)m_angle1.SetCheck(1);
+	else if (n_angle == 30)m_angle2.SetCheck(1);
+	else if (n_angle == 45)m_angle3.SetCheck(1);
+	else if (n_angle == 60)m_angle4.SetCheck(1);
+	else if (n_angle == 75)m_angle5.SetCheck(1);
 	//在编辑框控件中显示选中值（角度、两球直径）
 	Changeedit1();
 	Changeedit2();
 	Changeedit3();
-	//初速度设置（基于spin控件）
+	//初速度设置（spin控件）
 	CSpinButtonCtrl* pSpin = (CSpinButtonCtrl*)GetDlgItem(IDC_SPIN1);
 	pSpin->SetRange(10, 30);
-	pSpin->SetPos(20);
-	pSpin->GetBuddy()->SetWindowText(L"20");
+	pSpin->SetPos(n_v);
+	CString nv = L"";
+	nv.Format(L"%d", n_v);
+	pSpin->GetBuddy()->SetWindowText(nv);
 	//绘图操作
 	CClientDC dc(this);
 	GetDlgItem(IDC_RECT)->GetWindowRect(&rc);// 获取绘图区域的矩形的坐标，存储到rc中，这个rc就是所有绘图区域

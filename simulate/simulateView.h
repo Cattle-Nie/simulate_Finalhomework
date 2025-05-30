@@ -46,6 +46,9 @@ public:
 	afx_msg void OnExp();
 
 	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnExp1();
+	afx_msg void OnExp2();
+	afx_msg void OnExp3();
 };
 
 #ifndef _DEBUG  // simulateView.cpp 中的调试版本

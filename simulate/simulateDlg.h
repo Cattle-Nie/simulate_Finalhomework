@@ -84,4 +84,22 @@ public:
 	CStatic t_ax;
 	CStatic t_ay;
 	CStatic t_position;
+
+	//模拟运动时所用的全局变量,原本在cpp中，为了平行模拟，迁移到了这里
+	BOOL start = 0;//模拟开始开关
+	CPoint ball1, ball2;//小球的左上点和右下点
+	CPoint Ball1, Ball2;//障碍左上点和右下点
+	double w, h, x, y, X0, Y0, r, R, vx, vy, ax, ay;
+	//画布长，高，小球障碍中心位置xy，小球半径r，障碍半径R，x和y速度v，加速度a；
+	double v; //绝对速度
+	int t;//时间变量
+	int count = 0;//碰撞计数，用于控制障碍颜色变化
+	double g = 1.0, k = 1; //重力加速度，弹性系数
+	BOOL key;//自选参数：方向键开关.
+	double keyax = 0, keyay = 0;//自选参数：方向键加速度
+	CButton m_angle1;
+	CButton m_angle2;
+	CButton m_angle3;
+	CButton m_angle4;
+	CButton m_angle5;
 };
