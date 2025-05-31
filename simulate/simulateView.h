@@ -49,6 +49,7 @@ public:
 	afx_msg void OnExp1();
 	afx_msg void OnExp2();
 	afx_msg void OnExp3();
+	afx_msg void OnMediad();
 };
 
 #ifndef _DEBUG  // simulateView.cpp 中的调试版本

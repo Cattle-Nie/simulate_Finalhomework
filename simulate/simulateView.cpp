@@ -13,7 +13,7 @@
 #include "simulateDoc.h"
 #include "simulateView.h"
 #include "simulateDlg.h"
-
+#include "Cvideo.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -31,6 +31,7 @@ BEGIN_MESSAGE_MAP(CsimulateView, CView)
 	ON_COMMAND(ID_EXP1, &CsimulateView::OnExp1)
 	ON_COMMAND(ID_EXP2, &CsimulateView::OnExp2)
 	ON_COMMAND(ID_EXP3, &CsimulateView::OnExp3)
+	ON_COMMAND(ID_MEDIAD, &CsimulateView::OnMediad)
 END_MESSAGE_MAP()
 
 // CsimulateView 构造/析构
@@ -159,4 +160,11 @@ void CsimulateView::OnExp3()
 	dlg3.n_miu = 0.1;
 	dlg3.n_v = 15;
 	dlg3.DoModal();
+}
+
+void CsimulateView::OnMediad()
+{
+	// TODO: 在此添加命令处理程序代码
+	Cvideo dlgv;
+	dlgv.DoModal();
 }
