@@ -87,10 +87,9 @@
 #define IDS_EDIT_MENU                   306
 #define IDR_POP_EXP                     310
 #define IDR_TOOLBAR_EXP                 313
-#define IDD_DIALOG1                     315
 #define IDD_AX                          315
 #define IDC_START                       1000
-#define IDC_OCX1                        1000
+#define ID_mediaplay                    1000
 #define IDC_EXIT                        1001
 #define IDC_RECT                        1002
 #define IDC_RADIO1                      1003
@@ -134,13 +133,15 @@
 #define ID_32784                        32784
 #define ID_32785                        32785
 #define ID_32786                        32786
+#define ID_32796                        32796
+#define ID_MEDIAD                       32797
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        318
-#define _APS_NEXT_COMMAND_VALUE         32796
+#define _APS_NEXT_COMMAND_VALUE         32798
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

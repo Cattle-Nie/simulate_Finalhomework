@@ -57,6 +57,15 @@
     <ClInclude Include="simulateDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CWMPPlayer4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Cvideo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CID_mediaplay.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="simulate.cpp">
@@ -90,6 +99,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="simulateDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CWMPPlayer4.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Cvideo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
