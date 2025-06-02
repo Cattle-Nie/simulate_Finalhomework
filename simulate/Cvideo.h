@@ -27,4 +27,5 @@ public:
 
 	DECLARE_EVENTSINK_MAP()
 	void Clickmediaplay(short nButton, short nShiftState, long fX, long fY);
+	void OnDoubleclickMediaplay(short nButton, short nShiftState, long fX, long fY);
 };
